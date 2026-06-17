@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ba6jvqpoemwts"]
+
+[ext_resource type="Script" uid="uid://ckqskh2q51aoi" path="res://scripts/flight_item.gd" id="1_mvwlk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvwlk"]
+
+[node name="flight_item" type="Node2D" unique_id=1705680822]
+script = ExtResource("1_mvwlk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=283014017]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1127990117]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=481991109]
+shape = SubResource("RectangleShape2D_mvwlk")

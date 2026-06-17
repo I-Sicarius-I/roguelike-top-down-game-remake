@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b618ecq0uli3a"]
+
+[ext_resource type="Script" uid="uid://vsadu7gng0yf" path="res://scripts/magazine_item.gd" id="1_cwuhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwuhd"]
+
+[node name="magazine_item" type="Node2D" unique_id=892701729]
+script = ExtResource("1_cwuhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=334557222]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1789531591]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=300109344]
+shape = SubResource("RectangleShape2D_cwuhd")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=269650978]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

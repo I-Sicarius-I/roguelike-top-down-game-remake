@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bun66ouqe0757"]
+
+[ext_resource type="Script" uid="uid://bjt1a7yd75gkw" path="res://scripts/bullet_item.gd" id="1_sf3jq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r3jm"]
+
+[node name="bullet_item" type="Node2D" unique_id=1422445841]
+script = ExtResource("1_sf3jq")
+metadata/_custom_type_script = "uid://nxls7spa15nv"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=648202069]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=613610254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=536292967]
+shape = SubResource("RectangleShape2D_2r3jm")

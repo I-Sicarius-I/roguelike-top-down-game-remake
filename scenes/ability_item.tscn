@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cf5r44yqgsiq7"]
+
+[ext_resource type="Script" uid="uid://d3ao71s4xelh2" path="res://scripts/ability_item.gd" id="1_ddyrc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddyrc"]
+
+[node name="ability_item" type="Node2D" unique_id=1941378720]
+script = ExtResource("1_ddyrc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=427006818]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=524836686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2091220083]
+shape = SubResource("RectangleShape2D_ddyrc")

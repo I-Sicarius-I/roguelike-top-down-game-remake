@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cxg8w2cmnob66"]
+
+[ext_resource type="Texture2D" uid="uid://cs65yfkk0st3p" path="res://assets/items/weapon/Bullet.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://byjtdgtihxmhy" path="res://scripts/bullet.gd" id="1_y25gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
+size = Vector2(8, 8)
+
+[node name="bullet" type="Node2D" unique_id=482313833]
+script = ExtResource("1_y25gk")
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1235566441]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea" unique_id=733583147]
+shape = SubResource("RectangleShape2D_h1aey")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115193717]
+position = Vector2(0, 2)
+texture = ExtResource("1_mkf8s")
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]

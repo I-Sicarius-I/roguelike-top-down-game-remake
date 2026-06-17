@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwlqpxgjcgj3o" path="res://assets/player/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://qvit2m6dj8b5" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://bvljmbq7mrsqq" path="res://scenes/staff.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -286,3 +287,6 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1856285859]
 zoom = Vector2(4, 4)
 limit_enabled = false
+
+[node name="staff" parent="." unique_id=1511244393 instance=ExtResource("3_qhqgy")]
+scale = Vector2(0.75, 0.75)

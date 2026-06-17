@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://j86aeqcfbly5"]
+
+[ext_resource type="Script" uid="uid://81wdm4460egu" path="res://scripts/shooting_item.gd" id="1_upujx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upujx"]
+
+[node name="shooting_item" type="Node2D" unique_id=932322773]
+script = ExtResource("1_upujx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=785209310]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1094840834]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=997383090]
+shape = SubResource("RectangleShape2D_upujx")
+
+[node name="Firerate" type="Timer" parent="." unique_id=301685230]
+one_shot = true
+
+[connection signal="timeout" from="Firerate" to="." method="_on_firerate_timeout"]

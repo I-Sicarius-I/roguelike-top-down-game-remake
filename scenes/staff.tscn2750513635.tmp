@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bvljmbq7mrsqq"]
+
+[ext_resource type="Script" uid="uid://cu8ekg6kbfllf" path="res://scripts/staff.gd" id="1_3gxsk"]
+[ext_resource type="Texture2D" uid="uid://qjo284sin86f" path="res://assets/items/weapon/test_gun.png" id="2_3gxsk"]
+
+[node name="staff" type="Node2D" unique_id=1511244393]
+script = ExtResource("1_3gxsk")
+
+[node name="bullet_spawn_marker" type="Marker2D" parent="." unique_id=286605863]
+position = Vector2(25, -3)
+
+[node name="staff_sprite" type="Sprite2D" parent="." unique_id=1547782496]
+position = Vector2(9, -3)
+texture = ExtResource("2_3gxsk")
+
+[node name="items" type="Node2D" parent="." unique_id=700060603]
