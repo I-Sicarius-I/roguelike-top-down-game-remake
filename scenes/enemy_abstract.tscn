@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d1ms6ufem7non"]
+
+[ext_resource type="Script" uid="uid://cvqjnpwm0p51y" path="res://scripts/enemy.gd" id="1_nql3w"]
+[ext_resource type="PackedScene" uid="uid://1ka7vjqi7n6r" path="res://scenes/enemy_healthbar.tscn" id="2_krt3e"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1961245700]
+script = ExtResource("1_nql3w")
+
+[node name="animation" type="AnimatedSprite2D" parent="." unique_id=346823272]
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=150177066]
+
+[node name="EnemyHealthbar" parent="." unique_id=1962675898 instance=ExtResource("2_krt3e")]

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://8au0kq53cjkq"]
+
+[ext_resource type="Script" uid="uid://o7ps5g58j5ql" path="res://scripts/dummy.gd" id="1_thcns"]
+[ext_resource type="Texture2D" uid="uid://dwdp7omcuw8qb" path="res://assets/enemies/dummy/dummy.png" id="2_fah2s"]
+[ext_resource type="PackedScene" uid="uid://1ka7vjqi7n6r" path="res://scenes/enemy_healthbar.tscn" id="3_fah2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5f3b"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m2ry"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4gkx"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fva3d"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v72lb"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3fdn"]
+atlas = ExtResource("2_fah2s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vk0ha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5f3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m2ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4gkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fva3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v72lb")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3fdn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynn4s"]
+size = Vector2(30, 31)
+
+[node name="DummyEnemy" type="CharacterBody2D" unique_id=909042239]
+script = ExtResource("1_thcns")
+metadata/_custom_type_script = "uid://cvqjnpwm0p51y"
+
+[node name="animation" type="AnimatedSprite2D" parent="." unique_id=159520479]
+sprite_frames = SubResource("SpriteFrames_vk0ha")
+animation = &"damage"
+autoplay = "idle"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=517914405]
+shape = SubResource("RectangleShape2D_ynn4s")
+
+[node name="DamageCooldown" type="Timer" parent="." unique_id=1896044247]
+
+[node name="EnemyHealthbar" parent="." unique_id=1962675898 instance=ExtResource("3_fah2s")]
+offset_top = -28.0
+offset_bottom = 12.0

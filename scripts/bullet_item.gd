@@ -17,5 +17,7 @@ func create_bullet() -> Bullet:
 
 
 func _deal_damage(amount: float, body: Node2D) -> void:
-	if body.name.to_lower().contains("enemy"):
+	var lower_name = body.name.to_lower()
+	
+	if lower_name.contains("enemy"):
 		body.take_damage(amount)

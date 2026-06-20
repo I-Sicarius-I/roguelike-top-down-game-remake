@@ -13,3 +13,5 @@ script = ExtResource("1_ddyrc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2091220083]
 shape = SubResource("RectangleShape2D_ddyrc")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1866286574]
