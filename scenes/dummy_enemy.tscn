@@ -2,7 +2,28 @@
 
 [ext_resource type="Script" uid="uid://o7ps5g58j5ql" path="res://scripts/dummy.gd" id="1_thcns"]
 [ext_resource type="Texture2D" uid="uid://dwdp7omcuw8qb" path="res://assets/enemies/dummy/dummy.png" id="2_fah2s"]
+[ext_resource type="Texture2D" uid="uid://bslhew2hrncww" path="res://assets/enemies/dummy/dummy_normal.png" id="2_fx3pk"]
 [ext_resource type="PackedScene" uid="uid://1ka7vjqi7n6r" path="res://scenes/enemy_healthbar.tscn" id="3_fah2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kos4r"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss26w"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwq7n"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40kdg"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u65s"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5f3b"]
 atlas = ExtResource("2_fah2s")
@@ -24,12 +45,36 @@ region = Rect2(96, 32, 32, 32)
 atlas = ExtResource("2_fah2s")
 region = Rect2(128, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mch3n"]
+atlas = ExtResource("2_fx3pk")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3fdn"]
 atlas = ExtResource("2_fah2s")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vk0ha"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kos4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss26w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwq7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40kdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u65s")
+}],
+"loop": false,
+"name": &"damage_normal",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k5f3b")
@@ -47,20 +92,31 @@ animations = [{
 "texture": SubResource("AtlasTexture_v72lb")
 }],
 "loop": false,
-"name": &"damage",
+"name": &"damage_sad",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mch3n")
+}],
+"loop": true,
+"name": &"idle_normal",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p3fdn")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_sad",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynn4s"]
 size = Vector2(30, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fx3pk"]
+radius = 48.0
 
 [node name="DummyEnemy" type="CharacterBody2D" unique_id=909042239]
 script = ExtResource("1_thcns")
@@ -68,16 +124,30 @@ metadata/_custom_type_script = "uid://cvqjnpwm0p51y"
 
 [node name="animation" type="AnimatedSprite2D" parent="." unique_id=159520479]
 sprite_frames = SubResource("SpriteFrames_vk0ha")
-animation = &"damage"
-autoplay = "idle"
-frame = 4
-frame_progress = 1.0
+animation = &"damage_normal"
+autoplay = "idle_sad"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=517914405]
 shape = SubResource("RectangleShape2D_ynn4s")
 
 [node name="DamageCooldown" type="Timer" parent="." unique_id=1896044247]
+wait_time = 1.5
 
 [node name="EnemyHealthbar" parent="." unique_id=1962675898 instance=ExtResource("3_fah2s")]
 offset_top = -28.0
 offset_bottom = 12.0
+
+[node name="DamageHealArea" type="Area2D" parent="." unique_id=659779463]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHealArea" unique_id=787055482]
+shape = SubResource("CircleShape2D_fx3pk")
+
+[node name="AreaCooldown" type="Timer" parent="." unique_id=1300998167]
+wait_time = 0.5
+
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="body_entered" from="DamageHealArea" to="." method="_on_damage_heal_area_body_entered"]
+[connection signal="body_exited" from="DamageHealArea" to="." method="_on_damage_heal_area_body_exited"]
+[connection signal="timeout" from="AreaCooldown" to="." method="_on_area_cooldown_timeout"]

@@ -1,9 +1,17 @@
 extends CharacterBody2D
 
 @onready var player_animation: AnimatedSprite2D = $PlayerAnimation
+@onready var damage_cooldown: Timer = $DamageCooldown
 
 const SPEED = 300.0
 var last_direction: Vector2 = Vector2.DOWN
+
+var max_health: float = 100.
+var health: float = max_health
+var invulnerable: bool = false
+var default_inv_time: float = 0.25
+
+signal update_health(health: float, max_health: float)
 
 
 func _physics_process(delta: float) -> void:
@@ -52,3 +60,39 @@ func _play_animation(prefix: String, dir: Vector2) -> void:
 		player_animation.play(prefix + "_up")
 
 	
+# Heath System
+
+func take_damage(amount: float) -> void:
+	
+	if not invulnerable:
+		health -= amount
+		
+		emit_signal("update_health", health, max_health)
+		
+		print("%s: [%.0f / %.0f]" % [self.name, health, max_health])
+		
+		if health <= 0:
+			_die()
+		
+		damage_cooldown.wait_time = 0.25
+		damage_cooldown.start()
+	
+	
+	
+
+func heal(amount: float) -> void:
+	
+	health += amount
+	health = health if health <= max_health else max_health
+	
+	emit_signal("update_health", health, max_health)
+	
+	print("%s: [%.0f / %.0f]" % [self.name, health, max_health])
+
+
+func _die() -> void:
+	pass
+
+
+func _on_damage_cooldown_timeout() -> void:
+	invulnerable = false

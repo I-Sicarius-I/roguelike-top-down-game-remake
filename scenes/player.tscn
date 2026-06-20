@@ -290,3 +290,8 @@ limit_enabled = false
 
 [node name="staff" parent="." unique_id=1511244393 instance=ExtResource("3_qhqgy")]
 scale = Vector2(0.75, 0.75)
+
+[node name="DamageCooldown" type="Timer" parent="." unique_id=663247297]
+one_shot = true
+
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

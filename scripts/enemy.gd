@@ -18,18 +18,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func take_damage(amount: float) -> void:
-	health -= amount
-	
-	_update_healthbar()
-	
-	
-	animation.play("damage")
-	
-	if health <= 0.:
-		_die()
-	
-	# debug
-	print("%s: [%.2f / %.2f]" % [self.name, health, max_health])
+	pass
 
 
 func _update_healthbar() -> void:
