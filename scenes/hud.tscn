@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://drwrpj8m6op64"]
+
+[ext_resource type="Script" uid="uid://dyktwth6fuy4g" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[node name="Hud" type="CanvasLayer" unique_id=289372288]
+script = ExtResource("1_ahhtf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=290767594]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+
+[node name="HeartsContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=426730336]
+layout_mode = 2
+
+[node name="AmmoContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1205411360]
+layout_mode = 2

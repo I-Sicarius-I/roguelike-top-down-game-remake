@@ -4,7 +4,7 @@ extends Enemy
 @onready var area_cooldown: Timer = $AreaCooldown
 
 var state: String = "normal"
-var health_change_amount: float = 25.
+var health_change_amount: float = 10.
 var in_area: bool = false
 var in_cooldown: bool = true
 var target: Node2D = null

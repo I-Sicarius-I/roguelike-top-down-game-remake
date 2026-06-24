@@ -131,7 +131,7 @@ autoplay = "idle_sad"
 shape = SubResource("RectangleShape2D_ynn4s")
 
 [node name="DamageCooldown" type="Timer" parent="." unique_id=1896044247]
-wait_time = 1.5
+wait_time = 5.0
 
 [node name="EnemyHealthbar" parent="." unique_id=1962675898 instance=ExtResource("3_fah2s")]
 offset_top = -28.0
@@ -145,7 +145,6 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_fx3pk")
 
 [node name="AreaCooldown" type="Timer" parent="." unique_id=1300998167]
-wait_time = 0.5
 
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="body_entered" from="DamageHealArea" to="." method="_on_damage_heal_area_body_entered"]

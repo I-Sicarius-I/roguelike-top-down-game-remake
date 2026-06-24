@@ -37,7 +37,6 @@ func _ready() -> void:
 		items.call_deferred("add_child", item)
 
 
-
 func _process(_delta: float) -> void:
 	_look_at_mouse()
 	_use_gun()
