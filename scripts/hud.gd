@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var hearts_container: HBoxContainer = $VBoxContainer/HeartsContainer
 @onready var ammo_container: HBoxContainer = $VBoxContainer/AmmoContainer
+@onready var coin_hud: HBoxContainer = $coin_hud
+
 
 # Health
 const HEART_SIZE: int = 20
@@ -37,6 +39,8 @@ func set_up_hud(player: Node2D) -> void:
 		magazine = player.get_node("staff").module_list["magazine"]
 		magazine.update_ammo.connect(_on_update_ammo)
 		_on_update_ammo(magazine.curr_amount, magazine.max_amount)
+		
+		coin_hud.set_up_hud(player)
 	
 	
 func _on_update_health(health: float, max_health: float) -> void:

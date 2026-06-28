@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://8figjhpf5a3f"]
+
+[ext_resource type="Texture2D" uid="uid://07o2wsor05q1" path="res://assets/ui/coin_ui.png" id="1_pnwko"]
+[ext_resource type="Script" uid="uid://dw38jxat7ovfe" path="res://scripts/coin_hud.gd" id="1_xd6th"]
+
+[node name="CoinHud" type="HBoxContainer" unique_id=1731469939]
+anchors_preset = -1
+anchor_right = 0.120000005
+anchor_bottom = 0.185
+offset_right = -98.240005
+offset_bottom = -79.880005
+scale = Vector2(3, 3)
+script = ExtResource("1_xd6th")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=501965340]
+layout_mode = 2
+texture = ExtResource("1_pnwko")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1922255156]
+layout_mode = 2
+text = "0"

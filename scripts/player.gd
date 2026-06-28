@@ -6,12 +6,19 @@ extends CharacterBody2D
 const SPEED = 300.0
 var last_direction: Vector2 = Vector2.DOWN
 
+# Health vars
 var max_health: float = 100.
 var health: float = max_health
 var invulnerable: bool = false
 var default_inv_time: float = 0.25
 
 signal update_health(health: float, max_health: float)
+
+
+# Money
+var wallet_amount: int = 0
+signal update_wallet_hud(amount: int)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -60,7 +67,7 @@ func _play_animation(prefix: String, dir: Vector2) -> void:
 		player_animation.play(prefix + "_up")
 
 	
-# Heath System
+# Health System
 
 func take_damage(amount: float) -> void:
 	
@@ -86,8 +93,6 @@ func heal(amount: float) -> void:
 	health = health if health <= max_health else max_health
 	
 	emit_signal("update_health", health, max_health)
-	
-	print("%s: [%.0f / %.0f]" % [self.name, health, max_health])
 
 
 func _die() -> void:
@@ -96,3 +101,14 @@ func _die() -> void:
 
 func _on_damage_cooldown_timeout() -> void:
 	invulnerable = false
+	
+	
+# Money
+
+func update_wallet(amount: int) -> void:
+	
+	wallet_amount += amount
+	
+	emit_signal("update_wallet_hud", wallet_amount)
+	
+	print("%s's wallet: %d" % [self.name, wallet_amount])

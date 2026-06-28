@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bacx266217ch" path="res://assets/tilesets/TilesetTest.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://8au0kq53cjkq" path="res://scenes/dummy_enemy.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://drwrpj8m6op64" path="res://scenes/hud.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://vo2ckbljvpe7" path="res://scenes/coin.tscn" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bu61gncefwsru" path="res://scenes/healing_item.tscn" id="7_o6xl0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -53,7 +55,13 @@ tile_set = SubResource("TileSet_jyhfs")
 [node name="Player" parent="level_root" unique_id=986945971 instance=ExtResource("1_o5qli")]
 position = Vector2(-16, -4)
 
+[node name="Coin" parent="level_root" unique_id=747945951 instance=ExtResource("4_tefeu")]
+position = Vector2(-72, 10)
+
 [node name="DummyEnemy" parent="." unique_id=1658941377 instance=ExtResource("3_sugp2")]
 position = Vector2(81, 24)
 
 [node name="Hud" parent="." unique_id=289372288 instance=ExtResource("4_jyhfs")]
+
+[node name="HealingItem" parent="." unique_id=1263932457 instance=ExtResource("7_o6xl0")]
+position = Vector2(-42, 85)

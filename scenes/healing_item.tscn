@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bu61gncefwsru"]
+
+[ext_resource type="Script" uid="uid://d3ec38qrdyaug" path="res://scripts/healing_item.gd" id="1_3kjny"]
+[ext_resource type="Texture2D" uid="uid://bpm3r8j1tdv17" path="res://assets/items/apple.png" id="1_tg7o4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kjny"]
+radius = 12.0
+
+[node name="HealingItem" type="Area2D" unique_id=1263932457]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_3kjny")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=316200739]
+texture = ExtResource("1_tg7o4")
+region_enabled = true
+region_rect = Rect2(2, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=883660124]
+shape = SubResource("CircleShape2D_3kjny")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
